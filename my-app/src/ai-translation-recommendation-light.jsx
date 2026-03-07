@@ -106,7 +106,7 @@ function RecommendationTab() {
         <Label color={COLORS.deepl}>Primary Recommendation</Label>
         <h2 style={{ fontSize: 22, fontWeight: 700, margin: "0 0 12px" }}>Hybrid Strategy: <span style={{ color: COLORS.deepl }}>DeepL + Google + Claude</span></h2>
         <p style={{ color: COLORS.textDim, lineHeight: 1.8, fontSize: 13, margin: "0 0 20px" }}>
-          Use DeepL as your primary engine for major market languages (EU + JA + ZH). Fall back to Google Cloud Translate for long-tail languages. Route campaign-critical content through Claude for highest nuance.
+          Use DeepL as your primary engine for major market languages. Fall back to Google Cloud Translate for long-tail languages. Route campaign-critical content through Claude for highest nuance.
         </p>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 12 }}>
           {[
@@ -128,12 +128,12 @@ function RecommendationTab() {
         <Label color={COLORS.yellow}>Routing Decision Matrix</Label>
         <div style={{ display: "grid", gap: 8 }}>
           {[
-            { content: "Product titles and descriptions", lang: "DE, FR, ES, IT, NL, PL, PT, JA, ZH", engine: "DeepL", reason: "Highest natural quality" },
+            { content: "Product titles and descriptions", lang: "DeepL supported languages", engine: "DeepL", reason: "Highest natural quality" },
             { content: "UI labels, buttons, navigation", lang: "All languages", engine: "Google", reason: "Speed and cost efficiency" },
             { content: "Campaign headlines, hero text", lang: "Major markets", engine: "Claude", reason: "Brand voice preservation" },
             { content: "Legal / T&C text", lang: "All languages", engine: "DeepL + Human", reason: "Accuracy + legal liability" },
             { content: "SEO meta descriptions", lang: "All languages", engine: "DeepL + Claude", reason: "Keyword-aware output" },
-            { content: "Rare languages", lang: "TH, MS, SW etc.", engine: "Google", reason: "DeepL does not support" },
+            { content: "Rare languages", lang: "DeepL does not support", engine: "Google", reason: "DeepL does not support" },
           ].map(row => (
             <div key={row.content} style={{ display: "grid", gridTemplateColumns: "1fr 1fr 120px 1fr", gap: 10, padding: "10px 14px", background: COLORS.bg, borderRadius: 6, fontSize: 12, alignItems: "center" }}>
               <div style={{ color: COLORS.textMid }}>{row.content}</div>
@@ -458,7 +458,6 @@ function ArchitectureTab() {
               maintenance: "Model updates ~yearly. No vendor dependency. Runs entirely offline.",
               cost: "Free (open source). Infra cost: ~$50-150/mo for a dedicated scoring microservice on small GPU instance.",
               bestFor: "Product descriptions, campaign copy, any content where quality really matters",
-              install: "pip install unbabel-comet",
               ref: "Reference translation optional but improves accuracy",
               badge: "BEST QUALITY",
             },
@@ -473,7 +472,6 @@ function ArchitectureTab() {
               maintenance: "Less actively maintained than COMET. TensorFlow dependency adds complexity.",
               cost: "Free (open source). Same infra cost as COMET. TensorFlow adds ~500MB overhead.",
               bestFor: "When you cannot provide a reference translation and need good quality signal",
-              install: "pip install sacrebleu / clone google-research/bleurt",
               ref: "Reference-free mode available — useful when no approved translation exists",
               badge: null,
             },
@@ -488,7 +486,6 @@ function ArchitectureTab() {
               maintenance: "Zero maintenance. No model updates. Works identically forever.",
               cost: "Free. Negligible compute cost. Can run inline in your app process.",
               bestFor: "UI strings, button labels, short metadata — high volume, low stakes content",
-              install: "pip install sacrebleu",
               ref: "Requires a reference translation — needs at least one approved translation per string",
               badge: "FASTEST",
             },
@@ -1071,16 +1068,16 @@ export default function App() {
         <div style={{ position: "absolute", bottom: -60, left: 220, width: 200, height: 200, borderRadius: "50%", background: "radial-gradient(circle,#1A73E812,transparent 70%)", pointerEvents: "none" }} />
         <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", flexWrap: "wrap", gap: 16, marginBottom: 28, position: "relative" }}>
           <div>
-            <div style={{ fontSize: 10, letterSpacing: "0.2em", color: COLORS.deepl, marginBottom: 8 }}>AI TRANSLATION STRATEGY REPORT</div>
+            <div style={{ fontSize: 10, letterSpacing: "0.2em", color: COLORS.deepl, marginBottom: 8 }}>AI TRANSLATION STRATEGY</div>
             <h1 style={{ fontSize: "clamp(22px,4vw,38px)", fontWeight: 700, margin: "0 0 10px", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
-              CMS Translation<br /><span style={{ color: COLORS.deepl }}>Engine Selection</span>
+              CMS Translation<br /><span style={{ color: COLORS.deepl }}>Engine Evaluation</span>
             </h1>
             <p style={{ color: COLORS.textDim, fontSize: 13, margin: 0, maxWidth: 460, lineHeight: 1.6 }}>
-              Accuracy · Language Coverage · Cost · Architecture — full evaluation for AI-powered multilingual storefront
+              Accuracy · Language Coverage · Cost  — full evaluation for AI-powered translation architecture
             </p>
           </div>
           <div style={{ display: "flex", gap: 24 }}>
-            {[["5","Providers Evaluated"],["133","Max Languages"],["3","Architecture Layers"]].map(([n,l]) => (
+            {[["5","Providers Evaluated"],["133","Max Languages"],["6","Architecture Layers"]].map(([n,l]) => (
               <div key={n} style={{ textAlign: "center" }}>
                 <div style={{ fontSize: 30, fontWeight: 700, color: COLORS.deepl, lineHeight: 1 }}>{n}</div>
                 <div style={{ fontSize: 9, color: COLORS.textFaint, letterSpacing: "0.1em", marginTop: 4 }}>{l}</div>
@@ -1111,7 +1108,7 @@ export default function App() {
       </div>
       <div style={{ padding: "14px 44px", borderTop: "1px solid " + COLORS.border, display: "flex", justifyContent: "space-between", fontSize: 10, color: COLORS.textFaint }}>
         <span>CMS AI Translation Strategy</span>
-        <span>Prices as of early 2025 — verify current rates with providers</span>
+        <span>Prices are approximate — verify current rates with providers</span>
       </div>
     </div>
   );
