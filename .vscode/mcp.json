@@ -1,0 +1,14 @@
+{
+  "servers": {
+    "Rosetta": {
+      "type": "stdio",
+      "command": "uvx",
+      "args": ["ims-mcp@latest"],
+      "env": {
+        "ROSETTA_SERVER_URL": "https://ims.evergreen.gcp.griddynamics.net/",
+        "ROSETTA_API_KEY": "ragflow-15iHxg66JT7TnQdDk6hSLrDfjJEqZxQpesJx_XTKg1Q",
+        "ROSETTA_USER_EMAIL": "vangarasingara@griddynamics.com"
+      }
+    }
+  }
+}

@@ -814,9 +814,9 @@ function OverviewSection() {
   return (
     <div>
       <SectionHeader title="FLP360 AI Integration" tag="Overview"
-        subtitle="Augmenting your existing Java reporting platform with AI. The AI layer slots in as a new Spring Boot microservice — no frontend rebuild required." />
+        subtitle="Augmenting existing Java reporting platform with AI. The AI layer slots in as a new Spring Boot microservice." />
       <Callout type="info">
-        <strong>Scope:</strong> AI integration only. New ai-service microservice communicates with your existing Java backend via REST. All UI changes are small embedded widgets in existing report pages.
+        <strong>Scope:</strong> AI integration with in existing report pages as an embedded widgets.
       </Callout>
       <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:16, marginTop:20 }}>
         {features.map((f,i) => (
